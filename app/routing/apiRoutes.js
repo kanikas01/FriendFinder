@@ -3,6 +3,7 @@
 
 var friends = require("../data/friends");
 
+
 // ---------- ROUTING ---------- //
 
 module.exports = function(app) {
@@ -15,24 +16,18 @@ module.exports = function(app) {
     var userScores = req.body.scores;
     var bestMatch = friends[0];
     var bestMatchScore = 40;
-    var totalDifference = 0;
+    // Compare user's scores with each friend's scores
     friends.forEach(element => {
+      var totalDifference = 0;
       for (var i = 0; i < userScores.length; i++) {
-        console.log(userScores[i], element.scores[i]);
         totalDifference += Math.abs(userScores[i] - element.scores[i]);
       }
-
       if (totalDifference < bestMatchScore) {
         bestMatch = element;
         bestMatchScore = totalDifference;
       }
-
-    console.log(totalDifference);
-    totalDifference = 0;
     });
-    
-    console.log(bestMatch.name);
+    // Return the best match
     res.json(bestMatch);
-
   });
 }
