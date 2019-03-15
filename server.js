@@ -20,7 +20,7 @@ app.use(express.json());
 // ---------- ROUTING ---------- //
 
 // Import routing files
-// require("./app/routing/apiRoutes")(app);
+require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
 
