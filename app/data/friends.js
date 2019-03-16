@@ -1,3 +1,4 @@
+
 var friends =	[
   {
     "name": "Andy",
